@@ -1,0 +1,113 @@
+\documentclass[10pt,oneside,final]{article}
+
+% Set card size (2.13in x 3.37in) and remove all margins
+\usepackage[paperwidth=2.13in,paperheight=3.37in,margin=0cm,noheadfoot]{geometry}
+
+\setlength{\baselineskip}{0cm}
+\setlength{\topskip}{0pt}
+\usepackage{parskip}         % remove paragraph indents
+\usepackage{fontspec}        % load external fonts
+\usepackage{xcolor}          % more color options
+\usepackage{fontawesome5}    % for FontAwesome 5 icons
+\usepackage{graphics}        % load images
+\usepackage{qrcode}          % for QR codes
+\usepackage{tikz}            % drawing shapes
+
+% Define colors for the theme
+\definecolor{primarycolor}{HTML}{4CAB80}   % green (front side)
+\definecolor{secondarycolor}{HTML}{607D8B} % gray (back side)
+\definecolor{textcolor}{HTML}{FFFFFF}      % white
+
+% Set font and icons
+\setmainfont{Arial}  % Using Arial for simplicity
+\setsansfont{Arial}
+\setmonofont{Arial}
+
+% Define QR height
+\newlength{\qrheight}  \setlength{\qrheight}{0.95in}
+
+\begin{document}
+	% Front side (Card 1)
+	\thispagestyle{empty}
+	\vspace*{\fill}
+	\begin{tikzpicture}[remember picture,overlay,inner sep=0pt]
+		% Background color (front side)
+		\fill[primarycolor] 
+		(current page.south west) rectangle (current page.north east);
+		
+		% Profile picture (example as a circle)
+		\draw[fill=white,thick] 
+		([yshift=-0.5in]current page.north) 
+		circle (0.5in);
+		\node at ([yshift=-0.5in]current page.north) {
+			\includegraphics[width=0.8in]{figures/logo}
+		};
+		
+		% Name and title
+		\node[anchor=north,align=center,text=textcolor] 
+		at ([yshift=-1.2in]current page.north) {
+			{\fontsize{12pt}{14pt}\selectfont \textbf{Sophia Carter}} \\[0.1cm]
+			{\fontsize{10pt}{12pt}\selectfont UI/UX Designer}
+		};
+		
+		% Contact details
+		\node[anchor=north,align=left,text=textcolor] 
+		at ([yshift=-1.8in]current page.north) {
+			\small \faEnvelope \hspace{0.2cm} sophcarter@example.com \\[0.3cm]
+			\small \faPhoneSquare \hspace{0.2cm} +1 555 123 4567 \\[0.3cm]
+			\small \faGlobe \hspace{0.2cm} sophia.designstudio.com \\[0.3cm]
+			\small \faInstagram \hspace{0.2cm} instagram.com/sophia.design
+		};
+		
+	\end{tikzpicture}
+	\vspace*{\fill}
+	
+	% Back side (Card 2)
+	\newpage
+	\thispagestyle{empty}
+	\vspace*{\fill}
+	\begin{tikzpicture}[remember picture,overlay,inner sep=0pt]
+		% Background color (back side)
+		\fill[secondarycolor] 
+		(current page.south west) rectangle (current page.north east);
+		
+		% Company name and tagline
+		\node[anchor=center,align=center,text=textcolor] 
+		at ([yshift=2.65in]current page.south) {
+			{\fontsize{14pt}{16pt}\selectfont \textbf{Sophia Design Studio}} \\[0.1cm]
+			{\fontsize{10pt}{12pt}\selectfont \textit{Innovative UI/UX Solutions}}
+		};
+		
+		% QR code
+		\node[anchor=center] 
+		at ([yshift=1.65in]current page.south) {
+			\begin{tikzpicture}
+				% Rounded rectangle background
+				\draw[fill=white,rounded corners=0.1in] 
+				(-0.55in,-0.55in) rectangle (0.55in,0.55in);
+				% QR code generation
+				\node[anchor=center] {\qrcode[height=\qrheight]{BEGIN:VCARD
+						VERSION:3.0
+						N:Carter;Sophia;;Ms.
+						FN:Ms. Sophia Carter
+						TITLE:UI/UX Designer
+						ORG:Sophia Design Studio
+						TEL;TYPE=MOBILE:+1-555-123-4567
+						EMAIL:sophia.carter@example.com
+						URL:https://sophia.designstudio.com
+						ADR;TYPE=WORK,PREF:;;;City;State;12345;USA
+						REV:2024-11-23T12:00:00Z
+						END:VCARD}};
+		\end{tikzpicture}
+	};
+	
+	% Address and contact information
+	\node[anchor=south,align=center,text=textcolor] 
+	at ([yshift=0.2in]current page.south) {
+		\faMapMarker \hspace{0.2cm} City, State, 12345 \\ [0.1cm]
+		\faPhoneSquare \hspace{0.2cm} +1 555 123 4567 \\[0.1cm]
+		\faEnvelope \hspace{0.2cm} sophia.designstudio.com
+	};
+\end{tikzpicture}
+\vspace*{\fill}
+\end{document}

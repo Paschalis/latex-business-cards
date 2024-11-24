@@ -1,0 +1,101 @@
+\documentclass[10pt,oneside,final]{article}
+
+% Set card size (2.13in x 3.37in) and remove all margins
+\usepackage[paperwidth=2.13in,paperheight=3.37in,margin=0cm,noheadfoot]{geometry}
+
+\setlength{\baselineskip}{0cm}
+\setlength{\topskip}{0pt}
+\usepackage{parskip}         % remove paragraph indents
+\usepackage{fontspec}        % load external fonts
+\usepackage{xcolor}          % more color options
+\usepackage{fontawesome5}    % for FontAwesome 5 icons
+\usepackage{graphics}        % load images
+\usepackage{tikz}            % drawing
+\usepackage{qrcode}          % for QR codes
+
+% Define colors for the new modern theme
+\definecolor{primarycolor}{HTML}{4F9E9A}   % soft teal
+\definecolor{accentcolor}{HTML}{FFC107}    % amber accent color
+\definecolor{darkgrey}{HTML}{2F2F2F}       % dark grey for text
+
+% Set font and icons
+\setmainfont{Arial}  % Using Arial for simplicity
+\setsansfont{Arial}
+\setmonofont{Arial}
+
+% Define QR height
+\newlength{\qrheight}  \setlength{\qrheight}{1in}
+\newlength{\edgemargin} \setlength{\edgemargin}{0.2in}
+\newlength{\logowidth}  \setlength{\logowidth}{0.5in}
+
+% Create a simple modern business card design
+\begin{document}
+	\thispagestyle{empty}
+	\vspace*{\fill}
+	\begin{center}
+		% Rank + Name
+		{\color{primarycolor} \Huge \textbf{Sophia Hunter}} \\[0.2cm]
+		% Role Title
+		{\color{darkgrey} \Large Software Engineer} \\[0.2cm]
+		% Include figure (if applicable)
+		%\includegraphics[width=0.6in]{figures/logo} 
+		\vspace{0.35cm}
+		
+		% Separator line with a soft gradient color
+		\noindent\rule[0mm]{2.13in}{0.5mm} \\[0.5cm]
+		
+		% Contact Information (Icon + text)
+		\begin{tabbing}
+			\hspace{0.35cm} \= \hspace{0.5cm} \= \kill
+			\> \faPhoneSquare \> \small\texttt{+1 555 555 5555} \\
+			\> \faEnvelope \> \small\texttt{sophia.hunter@example.com} \\
+			\> \faGithub \> \small\texttt{github.com/sophiahunter} \\
+			\> \faLinkedin \> \small\texttt{linkedin.com/in/sophiahunter} \\
+		\end{tabbing}
+	\end{center}
+	\vspace*{\fill}
+	
+	\clearpage
+	
+	\thispagestyle{empty}
+	\vspace*{\fill}
+	\begin{tikzpicture}[remember picture,overlay,inner sep=0pt]
+		% Stylish gradient background with rounded corners
+		\draw[fill=primarycolor,draw=primarycolor,very thick,rounded corners=10pt] 
+		(current page.center) 
+		++(-\paperwidth/2+\edgemargin,\paperheight/2-\edgemargin) 
+		rectangle 
+		++(\paperwidth-2*\edgemargin,-\paperheight+2*\edgemargin);
+		
+		% Circular decorative element in amber color
+		\draw[fill=accentcolor,draw=accentcolor] 
+		(current page.center) 
+		++(0,0.75in) 
+		circle (0.4in);
+		
+		% Logo
+		\draw (current page.center) 
+		++(0,\paperheight/2.15-\edgemargin-\paperwidth/2+\edgemargin+\logowidth/1) 
+		node (helper logo) {};
+		\node[anchor=north] at (helper logo) {\includegraphics[width=\logowidth]{figures/logo}};
+		
+		% QR code
+		\draw (current page.center) 
+		++(0,-\paperheight/2+\edgemargin+\paperwidth/2-\edgemargin-\qrheight/1.5) 
+		node (helper qr) {};
+		\node[anchor=south] at (helper qr) 
+		{\qrcode[level=M,height=\the\qrheight]{BEGIN:VCARD
+				VERSION:3.0
+				N:Hunter;Sophia;;Ms.
+				FN:Ms. Sophia Hunter
+				TITLE:Software Engineer
+				ORG:Tech Innovations
+				TEL;TYPE=MOBILE:+1-555-555-5555
+				EMAIL:sophia.hunter@example.com
+				ADR;TYPE=WORK,PREF:;;;Somewhere;State;12345;USA
+				REV:2024-11-23T12:00:00Z
+				END:VCARD}};
+	\end{tikzpicture}
+	
+	\vspace*{\fill}
+\end{document}

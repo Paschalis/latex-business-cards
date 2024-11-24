@@ -1,0 +1,119 @@
+\documentclass[10pt,oneside,final]{article}
+
+% Set card size (3.37in x 2.13in) and remove all margins
+\usepackage[paperwidth=3.37in,paperheight=2.13in,margin=0cm,noheadfoot]{geometry}
+
+\setlength{\baselineskip}{0cm}
+\setlength{\topskip}{0pt}
+\usepackage{parskip}         % remove paragraph indents
+\usepackage{fontspec}        % load external fonts
+\usepackage{xcolor}          % more color options
+\usepackage{fontawesome5}    % for FontAwesome 5 icons
+\usepackage{graphics}        % load images
+\usepackage{qrcode}          % for QR codes
+\usepackage{tikz}            % drawing shapes
+
+% Define colors for the theme
+\definecolor{primarycolor}{HTML}{FF5722}   % orange
+\definecolor{secondarycolor}{HTML}{607D8B} % blue-grey
+\definecolor{textcolor}{HTML}{212121}      % dark grey
+
+% Set font and icons
+\setmainfont{Arial}  % Using Arial for simplicity
+\setsansfont{Arial}
+\setmonofont{Arial}
+
+% Define QR height
+\newlength{\qrheight}  \setlength{\qrheight}{1.2in}
+
+\begin{document}
+	
+	% Front Side
+	\thispagestyle{empty}
+	\vspace*{\fill}
+	\begin{tikzpicture}[remember picture,overlay,inner sep=0pt]
+		% Background color
+		\fill[primarycolor] 
+		(current page.south west) rectangle (current page.north east);
+		
+		% Left-side color bar
+		\fill[secondarycolor] 
+		(current page.south west) rectangle ([xshift=0.7in]current page.north west);
+		
+		% Profile picture (example as a circle)
+		\draw[fill=white,thick] 
+		([xshift=0.35in,yshift=-0.5in]current page.north west) 
+		circle (0.4in);
+		\node at ([xshift=0.35in,yshift=-0.5in]current page.north west) {
+			\includegraphics[width=0.6in]{figures/logo}
+		};
+		
+		% Name and title
+		\node[anchor=west,align=left,text=textcolor] 
+		at ([xshift=0.8in,yshift=-0.4in]current page.north west) {
+			{\fontsize{12pt}{14pt}\selectfont \textbf{Ethan Moore}} \\[0.1cm]
+			{\fontsize{10pt}{12pt}\selectfont Web Developer} \\
+			\textcolor{white}{\rule{1.8in}{0.5mm}}
+		};
+		
+		% Contact details
+		\node[anchor=west,align=left,text=white] 
+		at ([xshift=0.8in,yshift=-1.35in]current page.north west) {
+			\faLaptopCode \hspace{0.2cm} ethanmoore.dev \\[0.2cm]
+			\faPhoneSquare \hspace{0.2cm} +1 987 654 3210 \\[0.2cm]
+			\faEnvelope \hspace{0.2cm} ethan.moore@example.com \\[0.2cm]
+			\faLinkedin \hspace{0.2cm} linkedin.com/in/ethanmoore \\[0.2cm]
+			\faGithub \hspace{0.2cm} github.com/ethanmoore
+		};
+	\end{tikzpicture}
+	\vspace*{\fill}
+	
+	\newpage
+	
+	% Back Side
+	\thispagestyle{empty}
+	\vspace*{\fill}
+	\begin{tikzpicture}[remember picture,overlay,inner sep=0pt]
+		% Background color
+		\fill[secondarycolor] 
+		(current page.south west) rectangle (current page.north east);
+		
+		% Centered QR code
+		\node[anchor=center] 
+		at ([yshift=0.2in]current page.center) { % Adjust the vertical position
+			\begin{tikzpicture}
+				% Rounded rectangle background
+				\draw[fill=white,rounded corners=0.2in] 
+				(-0.7in,-0.7in) rectangle (0.7in,0.7in);
+				% QR code generation
+				\node[anchor=center] {\qrcode[height=\qrheight]{BEGIN:VCARD
+						VERSION:3.0
+						N:Moore;Ethan;;Mr.
+						FN:Mr. Ethan Moore
+						TITLE:Web Developer
+						ORG:Freelance
+						TEL;TYPE=MOBILE:+1-987-654-3210
+						EMAIL:ethan.moore@example.com
+						URL:https://ethanmoore.dev
+						ADR;TYPE=WORK,PREF:;;;Somewhere;State;67890;USA
+						REV:2024-11-23T12:00:00Z
+						END:VCARD}};
+		\end{tikzpicture}
+	};
+	
+	% Branding or tagline
+	\node[anchor=north,align=center,text=white] 
+	at ([yshift=-0.3in]current page.north) {
+		
+	};
+	
+	% Footer text
+	\node[anchor=south,align=center,text=white] 
+	at ([yshift=0.15in]current page.south) {
+		{\fontsize{12pt}{14pt}\selectfont Your Vision, Crafted in Code.} \\
+		{\fontsize{10pt}{12pt}\selectfont Powered by Innovation and Passion.}
+	};
+\end{tikzpicture}
+\vspace*{\fill}
+
+\end{document}
