@@ -14,6 +14,32 @@ A collection of **elegant and professional** LaTeX templates for creating busine
 - **Easy Customization**: Modify text, colors, logos, and icons to make the card truly yours.
 - **RFID Card Printing**: If you prefer, you can print your business cards onto RFID cards for digital integration.
 
+---
+
+## Integration with RFID-AttendTrack
+
+The [RFID-AttendTrack](https://github.com/Paschalis/RFID-AttendTrack) project automates attendance tracking using RFID technology. These LaTeX templates can be used to design **RFID-enabled business cards** that serve as both professional cards and attendance badges.
+
+### Key Use Cases
+- **Dual-Purpose Cards**: Combine business cards with RFID functionality for seamless attendance tracking.  
+- **Stylish & Functional**: Create branded, elegant designs that work with the AttendTrack system.  
+- **Easy Sync**: Track attendance, view records, and generate reports with RFID-AttendTrack.  
+
+> **Tip:**  
+> Pair these LaTeX templates with the RFID-AttendTrack system to create a unified and efficient solution for professional and functional RFID-enabled cards.
+
+<div align="center">
+
+[![RFID-AttendTrack](https://img.shields.io/badge/RFID--AttendTrack-Visit%20Now!-ff6347?style=for-the-badge&logo=github)](https://github.com/Paschalis/RFID-AttendTrack)  
+[![Stars](https://img.shields.io/github/stars/Paschalis/RFID-AttendTrack?label=🌟%20Stars&style=for-the-badge&color=yellow)](https://github.com/Paschalis/RFID-AttendTrack/stargazers)
+[![Forks](https://img.shields.io/github/forks/Paschalis/RFID-AttendTrack?label=🍴%20Forks&style=for-the-badge&color=blue)](https://github.com/Paschalis/RFID-AttendTrack/network/members)
+[![Activity](https://img.shields.io/github/last-commit/Paschalis/RFID-AttendTrack?label=⏳%20Last%20Update&style=for-the-badge&color=green)](https://github.com/Paschalis/RFID-AttendTrack/commits/main)
+
+</div>
+
+---
+
+
 ## Business Card Designs
 
 Below are previews of various business card designs created using the LaTeX templates. Each card showcases both the front and back sides together for easy viewing.
