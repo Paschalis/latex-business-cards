@@ -37,7 +37,7 @@
 		
 		% Profile picture (example as a circle)
 		\draw[fill=white,thick] 
-		([yshift=-0.5in]current page.north) 
+		([yshift=-0.55in]current page.north) 
 		circle (0.5in);
 		\node at ([yshift=-0.5in]current page.north) {
 			\includegraphics[width=0.8in]{figures/logo}
@@ -84,25 +84,30 @@
 			\begin{tikzpicture}
 				% Rounded rectangle background
 				\draw[fill=white,rounded corners=0.1in] 
-				(-0.55in,-0.55in) rectangle (0.55in,0.55in);
-				% QR code generation
-				\node[anchor=center] {\qrcode[height=\qrheight]{BEGIN:VCARD
-						VERSION:3.0
-						N:Carter;Sophia;;Ms.
-						FN:Ms. Sophia Carter
-						TITLE:UI/UX Designer
-						ORG:Sophia Design Studio
-						TEL;TYPE=MOBILE:+1-555-123-4567
-						EMAIL:sophia.carter@example.com
-						URL:https://sophia.designstudio.com
-						ADR;TYPE=WORK,PREF:;;;City;State;12345;USA
-						REV:2024-11-23T12:00:00Z
-						END:VCARD}};
-		\end{tikzpicture}
-	};
+				(-0.55in,-0.55in) rectangle (0.51in,0.55in);
+				% QR code generation with custom color
+				\node[anchor=center] {
+					\textcolor{primarycolor}{ % Set QR code color here (e.g., "blue")
+						\qrcode[height=\qrheight]{BEGIN:VCARD
+							VERSION:3.0
+							N:Carter;Sophia;;Ms.
+							FN:Ms. Sophia Carter
+							TITLE:UI/UX Designer
+							ORG:Sophia Design Studio
+							TEL;TYPE=MOBILE:+1-555-123-4567
+							EMAIL:sophia.carter@example.com
+							URL:https://sophia.designstudio.com
+							ADR;TYPE=WORK,PREF:;;;City;State;12345;USA
+							REV:2024-11-23T12:00:00Z
+							END:VCARD}
+					}
+				};
+			\end{tikzpicture}
+		};
+		
 	
 	% Address and contact information
-	\node[anchor=south,align=center,text=textcolor] 
+	\node[anchor=south,align=center,text=textcolor]  
 	at ([yshift=0.2in]current page.south) {
 		\faMapMarker \hspace{0.2cm} City, State, 12345 \\ [0.1cm]
 		\faPhoneSquare \hspace{0.2cm} +1 555 123 4567 \\[0.1cm]
