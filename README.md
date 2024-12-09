@@ -92,6 +92,9 @@ pdflatex business_card_template.tex
 
 If you prefer to have your business card as an **RFID card**, simply export your LaTeX document to PDF and print it using an RFID card printer that supports your preferred format. This way, you can make your business card interactive and tech-savvy!
 
+> **Note:**  
+> The standard dimensions for the business card templates in this repository are **85.6 mm × 54 mm (3.37 in × 2.13 in)**, the typical size for professional business cards. These dimensions can be customized in the `.tex` file to suit other formats.
+
 
 ## Examples
 
