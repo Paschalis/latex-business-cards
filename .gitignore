@@ -1,3 +1,6 @@
+# Ignore the military folder
+military/
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

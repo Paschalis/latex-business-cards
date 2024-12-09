@@ -39,7 +39,6 @@ The [RFID-AttendTrack](https://github.com/Paschalis/RFID-AttendTrack) project au
 
 ---
 
-
 ## Business Card Designs
 
 Below are previews of various business card designs created using the LaTeX templates. Each card showcases both the front and back sides together for easy viewing.
@@ -94,7 +93,6 @@ If you prefer to have your business card as an **RFID card**, simply export your
 
 > **Note:**  
 > The standard dimensions for the business card templates in this repository are **85.6 mm × 54 mm (3.37 in × 2.13 in)**, the typical size for professional business cards. These dimensions can be customized in the `.tex` file to suit other formats.
-
 
 ## Examples
 
