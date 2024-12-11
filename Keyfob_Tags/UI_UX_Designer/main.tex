@@ -1,0 +1,88 @@
+\documentclass[10pt,oneside,final]{article}
+
+% Set keyfob size (25mm diameter) and remove all margins
+\usepackage[paperwidth=25mm,paperheight=25mm,margin=0cm,noheadfoot]{geometry}
+
+\setlength{\baselineskip}{0cm}
+\setlength{\topskip}{0pt}
+\usepackage{parskip}         % remove paragraph indents
+\usepackage{fontspec}        % load external fonts
+\usepackage{xcolor}          % more color options
+\usepackage{graphics}        % load images
+\usepackage{qrcode}          % for QR codes
+\usepackage{tikz}            % drawing
+\usetikzlibrary{calc}        % required for coordinate calculations
+
+% Define colors for the theme
+\definecolor{primarycolor}{HTML}{4CAB80}   % green (front side)
+\definecolor{secondarycolor}{HTML}{607D8B} % gray (back side)
+\definecolor{textcolor}{HTML}{FFFFFF}      % white
+
+% Define some lengths for internal spacing
+\newlength{\logowidth}  \setlength{\logowidth}{0.5in}
+
+% Create a simple keyfob-style card
+\begin{document}
+	\thispagestyle{empty}
+	
+	\begin{tikzpicture}[remember picture, overlay]
+		% Circle background for logo
+		\draw[fill=primarycolor!50, draw=primarycolor, very thick] 
+		(current page.center) 
+		circle (12.5mm);  % 25mm diameter, radius = 12.5mm
+		
+		% Logo in the center
+		\node[anchor=center] at (current page.center) {\includegraphics[width=\logowidth]{figures/logo}};
+		
+		% Circular text for First Name (Johnathan) at the top
+		\textcolor{primarycolor}{
+		\foreach \i/\text in {
+			145/S, 125/O, 100/P, 75/H, 55/I, 35/A} {
+			\node[font=\sffamily\large\bfseries, anchor=center, rotate={\i-90}]
+			at ($(current page.center) + ({10mm*cos(\i)}, {10mm*sin(\i)})$) {\text};
+		}}
+		
+		% Circular text for Surname (Everett) at the bottom, with 180 degree rotation
+		\textcolor{primarycolor}{
+		\foreach \i/\text in {
+			225/C, 245/A, 265/R, 285/T, 305/E, 325/R} {
+			\node[font=\sffamily\large\bfseries, anchor=center, rotate={\i-90+180}]
+			at ($(current page.center) + ({10mm*cos(\i)}, {10mm*sin(\i)})$) {\text};
+		}}
+	
+		\textcolor{primarycolor}{
+		\foreach \i/\text in {
+			180/|, 360/|} {
+			\node[font=\sffamily\large\bfseries, anchor=center, rotate={\i-90+180}]
+			at ($(current page.center) + ({11mm*cos(\i)}, {11mm*sin(\i)})$) {\text};
+		}}
+	\end{tikzpicture}
+	
+	\clearpage
+	
+	% Back Side
+	\thispagestyle{empty}
+	\begin{tikzpicture}[remember picture, overlay]
+		% Circle background for QR code
+		\draw[draw=primarycolor, very thick] 
+		(current page.center) 
+		circle (12.5mm);  % 25mm diameter, radius = 12.5mm
+		
+		% QR code at the center of the circle
+		\node[anchor=center] at (current page.center) {
+			\textcolor{primarycolor}{ % Set QR code color here (e.g., "blue")
+			\qrcode[level=M, height=12.5mm]{
+				VERSION:3.0
+				N:Carter;Sophia;;Ms.
+				FN:Ms. Sophia Carter
+				TITLE:UI/UX Designer
+				ORG:Sophia Design Studio
+				TEL;TYPE=MOBILE:+1-555-123-4567
+				EMAIL:sophia.carter@example.com
+				URL:https://sophia.designstudio.com
+				ADR;TYPE=WORK,PREF:;;;City;State;12345;USA
+				REV:2024-11-23T12:00:00Z
+				END:VCARD}}};
+	\end{tikzpicture}
+	
+\end{document}
