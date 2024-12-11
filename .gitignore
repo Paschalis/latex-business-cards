@@ -1,5 +1,6 @@
 # Ignore the military folder
 military/
+Keyfob_Tags/military_tag/
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

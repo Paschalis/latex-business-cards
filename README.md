@@ -91,8 +91,26 @@ pdflatex business_card_template.tex
 
 If you prefer to have your business card as an **RFID card**, simply export your LaTeX document to PDF and print it using an RFID card printer that supports your preferred format. This way, you can make your business card interactive and tech-savvy!
 
+<p align="center">
+  <img src="images/example_cards.png" alt="example cards">
+</p>
+
 > **Note:**  
 > The standard dimensions for the business card templates in this repository are **85.6 mm × 54 mm (3.37 in × 2.13 in)**, the typical size for professional business cards. These dimensions can be customized in the `.tex` file to suit other formats.
+
+## Templates for RFID Keyfob Tags
+
+In addition to standard business card designs, this repository includes templates specifically tailored for **circular keyfob tags**. These tags are ideal for:
+
+- **Access control**
+- **Identification**
+- **Promotional purposes**
+
+<p align="center">
+  <img src="images/keyfob_tags.png" alt="keyfob tags">
+</p>
+
+For detailed instructions and additional resources related to keyfob tags, please visit the [Keyfob Tags Documentation](Keyfob_Tags/README.md).
 
 ## Examples
 
